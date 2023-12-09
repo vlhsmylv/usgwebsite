@@ -10,10 +10,50 @@ datasource db {
 // ****** User ******
 
 model User {
-  id        String    @id @default(uuid()) @map("_id")
-  username  String    
-  email     String   
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id       String @id @default(uuid()) @map("_id")
+  username String
+  password String
+}
+
+model Featured {
+  id        String     @id @default("init") @map("_id")
+  title     String
+  subtitle  String
+  mediaType MediaTypes
+  video     String?
+  image     String?
+}
+
+model Member {
+  id       String @id @map("_id")
+  picture  String
+  name     String
+  surname  String
+  about    String
+  position String
+  joined   String
+}
+
+model Event {
+  id        String  @id @map("_id")
+  title     String
+  content   String
+  thumbnail String
+  paid      Boolean
+  price     Int
+  location  String
+  upcoming  Boolean @default(false)
+}
+
+model Post {
+  id        String   @id @map("_id")
+  title     String
+  content   String
+  thumbnail String
+  tags      String[]
+}
+
+enum MediaTypes {
+  image
+  video
 }
