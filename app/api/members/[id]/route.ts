@@ -22,7 +22,7 @@ export const PATCH = async (
   params: { params: { id: string } }
 ) => {
   try {
-    const { about, picture, position, joined } = await req.json();
+    const { about, picture, position, joined, level } = await req.json();
     const { id: memberId } = params.params;
 
     const updatedMember = await prisma.member.update({
@@ -32,10 +32,11 @@ export const PATCH = async (
         picture,
         position,
         joined,
+        level,
       },
     });
 
-    return NextResponse.json(updatedMember, { status: 201 });
+    return NextResponse.json(updatedMember, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });
   }

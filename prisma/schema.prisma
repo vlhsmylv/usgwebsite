@@ -32,6 +32,7 @@ model Member {
   about    String
   position String
   joined   String
+  level    Int
 }
 
 model Event {
@@ -39,9 +40,10 @@ model Event {
   title     String
   content   String
   thumbnail String
-  paid      Boolean
+  paid      Boolean @default(false)
   price     Int
   location  String
+  date      String
   upcoming  Boolean @default(false)
 }
 
@@ -51,6 +53,7 @@ model Post {
   content   String
   thumbnail String
   tags      String[]
+  date      DateTime @default(now())
 }
 
 enum MediaTypes {

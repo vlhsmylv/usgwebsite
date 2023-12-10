@@ -36,7 +36,7 @@ export const PATCH = async (
       },
     });
 
-    return NextResponse.json(updatedPost, { status: 201 });
+    return NextResponse.json(updatedPost, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });
   }

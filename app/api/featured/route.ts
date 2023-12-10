@@ -33,7 +33,7 @@ export const PATCH = async (req: Request) => {
       },
     });
 
-    return NextResponse.json(updatedFeatured, { status: 201 });
+    return NextResponse.json(updatedFeatured, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });
   }

@@ -6,6 +6,11 @@ export const GET = async () => {
   try {
     const posts = await prisma.post.findMany();
 
+    // Sorting regarding their dates
+    posts.sort(function (a, b) {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+
     return NextResponse.json(posts, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });

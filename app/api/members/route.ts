@@ -6,6 +6,11 @@ export const GET = async () => {
   try {
     const members = await prisma.member.findMany();
 
+    // Sorting in ascending order
+    members.sort(function (a, b) {
+      return a.level - b.level;
+    });
+
     return NextResponse.json(members, { status: 200 });
   } catch (err) {
     return NextResponse.json(err, { status: 500 });
@@ -14,7 +19,8 @@ export const GET = async () => {
 
 export const POST = async (req: Request) => {
   try {
-    const { name, surname, about, picture, position, joined } = await req.json();
+    const { name, surname, about, picture, position, joined, level } =
+      await req.json();
 
     const memberSlug = slugify(`${name} ${surname}`);
 
@@ -27,6 +33,7 @@ export const POST = async (req: Request) => {
         picture,
         position,
         joined,
+        level,
       },
     });
 

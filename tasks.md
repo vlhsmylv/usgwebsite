@@ -1,0 +1,2 @@
+- [ ] Change MongoDB URL
+- [ ] Change IMGBB URL
